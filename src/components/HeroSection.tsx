@@ -1,35 +1,44 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
-const roles = ["Medical Students", "Physician Assistant Students"];
+// 1. Updated text to "PA Students"
+const roles = ["Medical Students", "PA Students"];
 
 const HeroSection = () => {
+  // 2. We double the array to create a buffer. 
+  // This ensures there is always a distinct "previous" (top) and "next" (bottom) item,
+  // preventing the overlap glitch where they crash into each other.
+  const displayRoles = [...roles, ...roles]; 
+  
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % roles.length);
+      // Loop through the length of the doubled array
+      setCurrentIndex((prev) => (prev + 1) % displayRoles.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [displayRoles.length]);
 
   return (
     <section className="min-h-screen flex items-center justify-center bg-background px-6">
       <div className="text-center max-w-5xl mx-auto">
-        {/* Main Headline - Large bold Inter with animated role */}
+        {/* Main Headline */}
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight opacity-0 animate-fade-in leading-tight">
           <span className="text-foreground">Direct one on one mentorship with</span>
           <br />
-          <span className="relative inline-flex justify-center h-[1.2em] w-full">
-            {roles.map((role, index) => (
+          {/* Container for the animated text */}
+          <span className="relative inline-flex justify-center h-[1.2em] w-full overflow-hidden">
+            {displayRoles.map((role, index) => (
               <span
-                key={role}
+                // Create a unique key using index since items are duplicated
+                key={`${role}-${index}`} 
                 className={`absolute inset-x-0 text-center text-forest transition-all duration-500 ease-in-out ${
                   index === currentIndex
-                    ? "translate-y-0 opacity-100"
-                    : index === (currentIndex - 1 + roles.length) % roles.length
-                    ? "-translate-y-6 opacity-0"
-                    : "translate-y-6 opacity-0"
+                    ? "translate-y-0 opacity-100" // Active: Center
+                    : index === (currentIndex - 1 + displayRoles.length) % displayRoles.length
+                    ? "-translate-y-8 opacity-0"  // Previous: Exit Up (changed from -6 to -8 for clearance)
+                    : "translate-y-8 opacity-0"   // Next/Others: Enter from Bottom
                 }`}
               >
                 {role}
@@ -38,7 +47,7 @@ const HeroSection = () => {
           </span>
         </h1>
 
-        {/* Subheadline - Futura/Jost, smaller, grey */}
+        {/* Subheadline */}
         <p className="mt-8 text-xl md:text-2xl font-display text-muted-foreground opacity-0 animate-fade-in animate-delay-100">
           Mentorship. Matters.
         </p>
