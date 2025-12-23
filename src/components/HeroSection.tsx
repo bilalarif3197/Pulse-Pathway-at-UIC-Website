@@ -19,7 +19,7 @@ const HeroSection = () => {
       <div className="text-center max-w-5xl mx-auto">
         {/* Main Headline */}
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight opacity-0 animate-fade-in leading-tight">
-          <span className="text-foreground">Direct one on one mentorship with</span>
+          <span className="text-foreground">direct long-term one on one mentorship with</span>
           <br />
           {/* Container needs overflow-hidden to "mask" the sliding text */}
           <span className="relative inline-flex justify-center h-[1.2em] w-full overflow-hidden">
