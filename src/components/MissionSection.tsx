@@ -4,7 +4,7 @@ const MissionSection = () => {
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         {/* Left side - Heading */}
         <div className="text-center lg:text-left">
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[hsl(170,50%,25%)] tracking-tight">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-forest tracking-tight">
             Our Mission
           </h2>
         </div>
