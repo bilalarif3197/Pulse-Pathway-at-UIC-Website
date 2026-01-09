@@ -29,10 +29,13 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-background px-6 relative">
-      <div className="text-center max-w-5xl mx-auto">
-        {/* Logo */}
-        <img src={logo} alt="Pulse Pathway at UIC" className="h-[18.75rem] mx-auto mb-4" />
+    <section className="min-h-screen flex flex-col bg-background px-6 relative">
+      {/* Logo - positioned 5px from top */}
+      <img src={logo} alt="Pulse Pathway at UIC" className="h-[18.75rem] mx-auto mt-[5px]" />
+      
+      {/* Centered content */}
+      <div className="flex-1 flex items-center justify-center">
+        <div className="text-center max-w-5xl mx-auto">
         
         {/* Main Headline */}
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
@@ -78,6 +81,7 @@ const HeroSection = () => {
           <Button variant="secondary" size="lg">
             Our Instagram
           </Button>
+        </div>
         </div>
       </div>
 
