@@ -25,9 +25,6 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
-      {/* Scanning line that sweeps from top to bottom */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-forest animate-line-wipe opacity-0 shadow-lg" />
-
       {/* EKG Animation Container */}
       <div className="relative w-full h-80 flex items-center justify-center px-8">
         {/* EKG Line */}
